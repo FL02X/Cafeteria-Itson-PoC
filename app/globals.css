@@ -1,0 +1,175 @@
+@import 'tailwindcss';
+
+:root {
+  --color-primary: #e8a020;
+  --color-primary-dark: #c4841a;
+  --color-bg: #f7f5f0;
+  --color-surface: #ffffff;
+  --color-header: #1c1c1c;
+  --color-text: #1c1c1c;
+  --color-text-muted: #6b6b6b;
+  --color-border: #e2ddd6;
+  --color-success: #2d7a3a;
+  --color-danger: #c0392b;
+}
+
+@theme inline {
+  --font-sans: var(--font-nunito), system-ui, sans-serif;
+  --font-script: var(--font-dancing), cursive;
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-text);
+  --color-border: var(--color-border);
+}
+
+@layer base {
+  html,
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    font-family: var(--font-nunito), system-ui, sans-serif;
+  }
+  input,
+  textarea,
+  button,
+  select {
+    font-family: inherit;
+  }
+}
+
+/* Hide scrollbars on horizontal category scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Mobile shell — fills viewport, responsive on all screens */
+.mobile-shell {
+  width: 100%;
+  min-height: 100dvh;
+  background-color: var(--color-bg);
+  position: relative;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   CSS-ONLY ANIMATIONS
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* Slide in from top (new orders in admin) */
+@keyframes slide-in-top {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-slide-in-top {
+  animation: slide-in-top 0.3s ease-out;
+}
+
+/* Subtle pulse for overdue orders */
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s ease-in-out infinite;
+}
+
+/* Horizontal slide for tab content - left */
+@keyframes slide-left {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.animate-slide-left {
+  animation: slide-left 0.2s ease-out;
+}
+
+/* Horizontal slide for tab content - right */
+@keyframes slide-right {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.animate-slide-right {
+  animation: slide-right 0.2s ease-out;
+}
+
+/* Cart badge pulse */
+@keyframes badge-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+.animate-badge-pulse {
+  animation: badge-pulse 0.3s ease-out;
+}
+
+/* Skeleton loading pulse */
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
+}
+.animate-skeleton {
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+  background-color: #E2DDD6;
+}
+
+/* Toast slide up */
+@keyframes toast-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-toast-up {
+  animation: toast-up 0.2s ease-out;
+}
+
+/* Toast fade out */
+@keyframes toast-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+.animate-toast-out {
+  animation: toast-out 0.2s ease-out forwards;
+}
+
+/* Button press scale */
+button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Smooth status transitions */
+.status-step {
+  transition: all 0.3s ease-out;
+}
